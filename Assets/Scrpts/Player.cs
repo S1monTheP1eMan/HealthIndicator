@@ -17,8 +17,6 @@ public class Player : MonoBehaviour
         {
             _health -= 10;
         }
-
-        Debug.Log(_health);
     }
 
     public void Heal()
@@ -27,7 +25,5 @@ public class Player : MonoBehaviour
         {
             _health += 10;
         }
-        
-        Debug.Log(_health);
     }
 }
