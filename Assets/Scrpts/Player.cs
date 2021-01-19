@@ -11,19 +11,29 @@ public class Player : MonoBehaviour
 
     public int Health => _health;
 
-    public void TakeDamage()
+    public bool TryTakeDamage()
     {
         if (_health > _minHealth)
         {
             _health -= 10;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
-    public void Heal()
+    public bool TryHeal()
     {
         if (_health < _maxHealth)
         {
             _health += 10;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

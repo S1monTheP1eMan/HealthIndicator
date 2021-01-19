@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 111719446}
   - component: {fileID: 111719445}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,19 +203,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 910447328}
-        m_MethodName: Heal
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 308927382}
-        m_MethodName: AddHealth
+        m_MethodName: TryAddHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -533,7 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1e8254d75c70d4497fcb7797a80023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slider: {fileID: 308927381}
+  _player: {fileID: 910447328}
 --- !u!1 &439543777
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +693,7 @@ GameObject:
   - component: {fileID: 524764410}
   - component: {fileID: 524764409}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -773,19 +762,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 910447328}
-        m_MethodName: TakeDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 308927382}
-        m_MethodName: RemoveHealth
+        m_MethodName: TryRemoveHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
