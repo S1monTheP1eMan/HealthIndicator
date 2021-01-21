@@ -15,39 +15,35 @@ public class SliderValueChanger : MonoBehaviour
         _slider = GetComponent<Slider>();
     }
 
-    public void TryAddHealth()
+    private void OnEnable()
     {
-        if (_player.TryHeal())
-        {
-            StartCoroutine(AddValue());
-        }
+        _player.HealthChanged += OnHealthChanged;
     }
 
-    public void TryRemoveHealth()
+    private void OnDisable()
     {
-        if (_player.TryTakeDamage())
-        {
-            StartCoroutine(RemoveValue());
-        }
+        _player.HealthChanged -= OnHealthChanged;
     }
 
-    private IEnumerator AddValue()
+    private void OnHealthChanged()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            _slider.value++;
-
-            yield return null;
-        }
+        StartCoroutine(ChangeValue());
     }
 
-    private IEnumerator RemoveValue()
+    private IEnumerator ChangeValue()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < _player.HealthPoints; i++)
         {
-            _slider.value--;
-
-            yield return null;
+            if (_player.IsHealed)
+            {
+                _slider.value++;
+                yield return null;
+            }
+            else
+            {
+                _slider.value--;
+                yield return null;
+            }
         }
     }
 }

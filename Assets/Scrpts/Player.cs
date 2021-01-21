@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -8,32 +9,30 @@ public class Player : MonoBehaviour
 
     private int _minHealth = 0;
     private int _maxHealth = 100;
+    private int _healthPoints = 10;
+    private bool _isHealed;
 
-    public int Health => _health;
+    public event UnityAction HealthChanged;
+    public bool IsHealed => _isHealed;
+    public int HealthPoints => _healthPoints;
 
-    public bool TryTakeDamage()
+    public void TryApplyDamage()
     {
         if (_health > _minHealth)
         {
-            _health -= 10;
-            return true;
-        }
-        else
-        {
-            return false;
+            _health -= _healthPoints;
+            _isHealed = false;
+            HealthChanged?.Invoke();
         }
     }
 
-    public bool TryHeal()
+    public void TryHeal()
     {
         if (_health < _maxHealth)
         {
-            _health += 10;
-            return true;
-        }
-        else
-        {
-            return false;
+            _health += _healthPoints;
+            _isHealed = true;
+            HealthChanged?.Invoke();
         }
     }
 }
